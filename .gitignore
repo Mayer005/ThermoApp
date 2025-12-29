@@ -39,3 +39,23 @@
 
 # debug information files
 *.dwo
+
+cmake_gcc/build/
+cmake_gcc/Makefile
+cmake_gcc/*.ninja
+cmake_gcc/*.marks
+build/
+bin/
+*.hex
+*.bin
+*.out
+*.map
+
+.pdm
+cp_init.sh
+cp_init.bat
+
+.vscode/
+
+__pycache__/
+*.pyc
