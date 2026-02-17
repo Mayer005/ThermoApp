@@ -51,11 +51,28 @@ bin/
 *.out
 *.map
 
+gnu_arm_*/
+Debug/
+Release/
+
 .pdm
 cp_init.sh
 cp_init.bat
+
+.pdm/
+.cdt/
+.settings/
+.project
+.cproject
+
+autogen/
+gecko_sdk_*/
 
 .vscode/
 
 __pycache__/
 *.pyc
+
+.vscode/
+*.launch
+*.ksconf

@@ -8,16 +8,25 @@ project(
 	LANGUAGES C CXX ASM
 )
 
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+file(GLOB_RECURSE APP_CPP_SOURCES "../src/*.cpp")
+file(GLOB_RECURSE APP_C_SOURCES "../src/*.c")
+
 # Include the definition of the slc_ThermoApp target,
 # which contains the content of the SLC project
 include(ThermoApp.cmake)
 
 add_executable(ThermoApp
-    # Add additional sources here
+    ../main.cpp
+    ${APP_CPP_SOURCES}
+    ${APP_C_SOURCES}
 )
 
 target_include_directories(ThermoApp PUBLIC
-    # Add additional include paths here
+    ../src
 )
 
 target_compile_definitions(ThermoApp PUBLIC
@@ -44,7 +53,7 @@ if(managed_project)
 endif()
 
 # Force the gcc linker command
-set_target_properties(ThermoApp PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(ThermoApp PROPERTIES LINKER_LANGUAGE CXX)
 
 # Create .bin, .hex and .s37 artifacts after building the project
 add_custom_command(TARGET ThermoApp

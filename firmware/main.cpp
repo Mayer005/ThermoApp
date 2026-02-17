@@ -27,6 +27,7 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  ******************************************************************************/
+extern "C" {
 #include "sl_component_catalog.h"
 #include "sl_main_init.h"
 #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
@@ -37,6 +38,7 @@
 #else // SL_CATALOG_KERNEL_PRESENT
 #include "sl_main_process_action.h"
 #endif // SL_CATALOG_KERNEL_PRESENT
+}
 
 int main(void)
 {
@@ -53,6 +55,7 @@ int main(void)
 
   // User provided code.
   app_init();
+  // Itt lesz majd az en sajat initem kesobb 
 
   while (1) {
     // Silicon Labs components process action routine
