@@ -46,10 +46,15 @@ component:
 - {id: device_init}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information_override}
+- {id: gatt_service_imu}
 - {id: health_thermometer}
 - instance: [sensor]
   id: i2cspm
+- {id: imu_driver}
 - {id: in_place_ota_dfu}
+- instance: [exp]
+  id: iostream_usart
+- {id: mic_driver}
 - {id: mpu}
 - {id: printf}
 - {id: rail_util_pti}

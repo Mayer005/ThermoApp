@@ -13,10 +13,11 @@
 #include "app_timer_internal.h"
 #include "sl_bluetooth.h"
 #include "sl_debug_swo.h"
+#include "sl_gatt_service_imu.h"
 #include "sl_gpio.h"
 #include "sl_i2cspm_instances.h"
-#include "sl_iostream_init_eusart_instances.h"
 #include "sl_iostream_stdlib_config.h"
+#include "sl_iostream_init_usart_instances.h"
 #include "sl_mbedtls.h"
 #include "sl_simple_button_instances.h"
 #include "sl_cli_instances.h"
@@ -116,11 +117,12 @@ void sli_stack_process_action(void)
 
 void sli_internal_app_process_action(void)
 {
+  sl_gatt_service_imu_step();
 }
 
 void sl_iostream_init_instances_stage_1(void)
 {
-  sl_iostream_eusart_init_instances();
+  sl_iostream_usart_init_instances();
 }
 
 void sl_iostream_init_instances_stage_2(void)

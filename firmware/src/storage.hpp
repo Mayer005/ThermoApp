@@ -3,6 +3,13 @@
 
 #include "types.hpp"
 #include <functional>
+#include <cstdint>
+
+extern "C" {
+    #include "em_msc.h"
+    #include "em_device.h"
+}
+
 class Storage {
 public:
     Storage();
@@ -15,9 +22,12 @@ public:
 
 private:
     static constexpr uint32_t FLASH_START_ADDRESS = 0x08080000; // Adjust this based on your microcontroller's flash memory map
-    static constexpr uint32_t FLASH_SIZE_BYTES = 0x000800000; // 512KB of flash memory
+    static constexpr uint32_t FLASH_SIZE_BYTES = 0x000080000; // 512KB of flash memory
 
     uint32_t writeHeadAddr;
+    inline void erasePage(uint32_t* pageStartAddress) {
+        MSC_ErasePage(pageStartAddress);
+    }
 };
 
 
