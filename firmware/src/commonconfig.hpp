@@ -1,0 +1,6 @@
+#ifndef COMMONCONFIG_HPP
+#define COMMONCONFIG_HPP
+
+#define DEBUG
+
+#endif // COMMONCONFIG_HPP
