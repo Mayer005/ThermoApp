@@ -3,7 +3,7 @@
   "specVersion" : "1.6",
   "version" : 1,
   "metadata" : {
-    "timestamp" : "2026-02-17T22:14:47Z",
+    "timestamp" : "2026-02-18T22:05:42Z",
     "authors" : [ {
       "name" : "Silicon Laboratories, Inc."
     } ],
@@ -228,6 +228,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:gatt_service_imu",
+      "name" : "Inertial Measurement Unit GATT Service",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:health_thermometer",
       "name" : "Health Thermometer API",
       "version" : "2025.6.2",
@@ -252,8 +264,32 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver",
+      "name" : "IMU - Inertial Measurement Unit",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:in_place_ota_dfu",
       "name" : "In-Place OTA DFU",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:iostream_usart",
+      "name" : "IO Stream: USART",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
@@ -338,6 +374,18 @@
       "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:sl_main",
       "name" : "System Setup (sl_main)",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver_core",
+      "name" : "IMU - Inertial Measurement Unit Core",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
@@ -899,6 +947,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:iostream_usart_core",
+      "name" : "IO Stream: USART Core",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:configuration_over_swo",
       "name" : "Configuration Over SWO",
       "version" : "2025.6.2",
@@ -947,6 +1007,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:rail_lib_singleprotocol",
+      "name" : "RAIL Library, Single Protocol",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_builtin_bonding_database",
       "name" : "Built-in Bluetooth bonding database",
       "version" : "2025.6.2",
@@ -955,6 +1027,18 @@
       },
       "licenses" : [ {
         "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver_icm20689",
+      "name" : "IMU - Device driver for InvenSense ICM-20689",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
       } ]
     }, {
       "scope" : "required",
@@ -1930,6 +2014,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:icm20689_driver",
+      "name" : "ICM20689 - Motion Sensor",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:mbedtls_slcrypto",
       "name" : "Silicon Labs Mbed TLS support",
       "version" : "2025.6.2",
@@ -2429,8 +2525,8 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:rail_lib_singleprotocol",
-      "name" : "RAIL Library, Single Protocol",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_extended_scanner",
+      "name" : "Scanner for extended advertisements",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
@@ -2441,86 +2537,62 @@
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:iostream_usart",
-      "name" : "IO Stream: USART",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_scanner",
+      "name" : "Scanner Base Feature",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
       },
       "licenses" : [ {
-        "expression" : "Zlib"
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:iostream_usart_core",
-      "name" : "IO Stream: USART Core",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_legacy_scanner",
+      "name" : "Scanner for legacy advertisements",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
       },
       "licenses" : [ {
-        "expression" : "Zlib"
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver",
-      "name" : "IMU - Inertial Measurement Unit",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync_scanner",
+      "name" : "Synchronization to periodic advertising trains by scanning",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
       },
       "licenses" : [ {
-        "expression" : "Zlib"
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver_core",
-      "name" : "IMU - Inertial Measurement Unit Core",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync",
+      "name" : "Periodic Advertising Synchronization",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
       },
       "licenses" : [ {
-        "expression" : "Zlib"
+        "expression" : "Zlib AND MSLA"
       } ]
     }, {
       "scope" : "required",
       "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:imu_driver_icm20689",
-      "name" : "IMU - Device driver for InvenSense ICM-20689",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_periodic_sync",
+      "name" : "Synchronization to Periodic Advertising without responses trains",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
       },
       "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:icm20689_driver",
-      "name" : "ICM20689 - Motion Sensor",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:gatt_service_imu",
-      "name" : "Inertial Measurement Unit GATT Service",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib"
+        "expression" : "MSLA"
       } ]
     } ]
   } ]

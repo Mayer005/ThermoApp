@@ -22,13 +22,13 @@ struct LogEntry {
 
     int16_t temperature; // Temperature of the room in Celsius, multiplied by 100 to preserve two decimal places --> 2byte    -|
     uint8_t humidity; // Humidity percentage, multiplied by 10 to preserve one decimal places --> 1byte                        |--> with theese three fields, I can estimate if someone is in the room or not, and if the conditions are good for them to breathe. (its always good to breathe xd)
-    uint8_t noise_level; // Noise level in the room, multiplied by 100 to preserve one decimal places --> 1byte               -|
+    uint8_t noise_level; // Noise level in the room --> 1byte                                                                 -|
 
     uint16_t ble_device_count_total; // Number of BLE devices detected anywhere nearby (this includes every device which has a ble signal which reaches the device) --> 2byte
     uint16_t ble_device_count_in_close; // Number of BLE devices detected up close --> 2byte
 
     uint8_t avg_rssi; // Average RSSI of the detected BLE devices, multiplied by 100 to preserve two decimal places (for body shading detection) --> 1byte
-    uint8_t step_count; // Step count detected by the accelerometer, multiplied by 10 to preserve one decimal place (for movement detection) --> 1byte
+    uint8_t padding; // padding --> 1byte
 
     uint8_t battery_level; // battery level --> 1byte
     uint8_t status; //reserved for future use, to make the struct size a multiple of 4 bytes (for better memory alignment) --> 1byte

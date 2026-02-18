@@ -33,13 +33,18 @@ component:
 - {id: app_os_helper}
 - {id: app_timer}
 - {id: bluetooth_feature_connection_role_peripheral}
+- {id: bluetooth_feature_extended_scanner}
 - {id: bluetooth_feature_gatt_server}
 - {id: bluetooth_feature_legacy_advertiser}
+- {id: bluetooth_feature_legacy_scanner}
 - {id: bluetooth_feature_power_control}
 - {id: bluetooth_feature_sm}
+- {id: bluetooth_feature_sync_scanner}
 - {id: bluetooth_feature_system}
 - {id: bluetooth_stack}
 - {id: brd2601b}
+- {id: btmesh_stack_scanner_extended}
+- {id: btmesh_stack_scanner_legacy}
 - instance: [example]
   id: cli
 - {id: clock_manager}

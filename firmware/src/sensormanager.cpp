@@ -12,7 +12,7 @@ extern "C" {
     #include "sl_icm20689.h"
 }
 
-SensorManager::SensorManager() : temperature(0), humidity(0), noiseLevel(0), steps(0) {}
+SensorManager::SensorManager() : temperature(0), humidity(0), noiseLevel(0), moving(false) {}
 
 SensorManager::~SensorManager() {}
 
@@ -46,33 +46,46 @@ void SensorManager::init() {
 
 }
 
+void SensorManager::reset() {
+    temperature = 0;
+    humidity = 0;
+    noiseLevel = 0;
+    moving = false;
+}
+
 void SensorManager::update() {
     // Measure temperature; units are % and milli-Celsius.
     sl_status_t sc;
     int32_t temperature = 0;
     uint32_t humidity = 0;
     sc = sl_sensor_rht_get(&humidity, &temperature);
+
     if (SL_STATUS_NOT_INITIALIZED == sc) {
       app_log_info("Relative Humidity and Temperature sensor is not initialized" APP_LOG_NL);
     } else if (sc != SL_STATUS_OK) {
       app_log_warning("Invalid RHT reading: %lu %ld" APP_LOG_NL, humidity, temperature);
     }
+
     this->temperature = static_cast<int16_t>(temperature/10); //it is in milli-Celsius by raw. It means 35000->35.000C. Firstly I will divide it only by 10 so it will be 3500->35.00C and the android app will be responsible to divide it by 100 to get the real value. MAX = 327.67C (it is more than enough, if there is a fire in the room, it will burn anyway..)
     this->humidity = static_cast<uint8_t>(humidity/1000); //uint32_t to uint8_t, so whole numbers as precentages, should be fine :)) max 255% (more than 100% so no problem here)
 
-    uint64_t sum;
+    uint64_t sum = 0;
     sc = sl_mic_get_n_samples(buffer, n_samples); // magic will happen (RMS)
+
     if (SL_STATUS_NOT_INITIALIZED == sc) {
       app_log_info("Microphone sensor is not initialized" APP_LOG_NL);
     } else if (sc != SL_STATUS_OK) {
       app_log_warning("Invalid MIC reading: %lu %ld" APP_LOG_NL, humidity, temperature);
       this->noiseLevel = 0;
     }
+
     for(auto& sample: buffer) {
         int32_t val = static_cast<int32_t>(sample);
         sum += val * val; // sum the power of all samples
     }
+
     float rms = std::sqrt(sum / MIC_SAMPLE_BUFFER_SIZE);
+
     if (rms > 0) {
         float raw_db = 20.0f * std::log10(rms); // This will be between 0-90
 
@@ -82,7 +95,26 @@ void SensorManager::update() {
         this->noiseLevel = static_cast<uint8_t>(real_db_spl);
     }
 
-    /// TODO: Accel 
+    float accel_data[3];
+    sc = sl_icm20689_accel_read_data(accel_data);
+
+    if (SL_STATUS_NOT_INITIALIZED == sc) {
+        app_log_info("ICM20689 sensor is not initialized" APP_LOG_NL);
+        this->moving = false; 
+    } else if (sc != SL_STATUS_OK) {
+        app_log_warning("Invalid ICM20689 reading" APP_LOG_NL);
+        this->moving = false; 
+    }
+    
+    float accel_resultant = std::sqrt(accel_data[0]*accel_data[0] + accel_data[1]*accel_data[1] + accel_data[2]*accel_data[2]);
+    float deviation = std::abs(accel_resultant - 1.0f);
+
+    if (deviation > 0.15f) {
+        this->moving = true;
+    } else {
+        this->moving = false;
+    }
+    
 }
 
 int16_t SensorManager::getTemperature() const {
@@ -95,4 +127,8 @@ uint8_t SensorManager::getHumidity() const {
 
 uint8_t SensorManager::getNoiseLevel() const {
     return noiseLevel;
+}
+
+bool SensorManager::isMoving() const {
+    return moving;
 }
