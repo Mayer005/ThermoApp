@@ -1,9 +1,13 @@
 #ifndef BLESCANNER_HPP
 #define BLESCANNER_HPP
 
+#if __cplusplus 
 extern "C" {
+#endif
     #include "sl_bt_api.h"
+#if __cplusplus
 }
+#endif
 
 #define MAX_SEEN_DEVICES 2500
 

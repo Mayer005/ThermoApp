@@ -10,7 +10,7 @@ referenced in this SBOM.)
 -->
 <bom xmlns="http://cyclonedx.org/schema/bom/1.6" version="1">
   <metadata>
-    <timestamp>2026-02-18T22:05:42Z</timestamp>
+    <timestamp>2026-03-09T20:37:43Z</timestamp>
     <authors>
       <author>
         <name>Silicon Laboratories, Inc.</name>
@@ -75,6 +75,16 @@ referenced in this SBOM.)
             <expression>Zlib</expression>
           </licenses>
         </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_extended_scanner" type="library">
+          <name>Scanner for extended advertisements</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
         <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_gatt_server" type="library">
           <name>GATT Server</name>
           <version>2025.6.2</version>
@@ -95,6 +105,16 @@ referenced in this SBOM.)
             <expression>MSLA</expression>
           </licenses>
         </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_legacy_scanner" type="library">
+          <name>Scanner for legacy advertisements</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
         <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_power_control" type="library">
           <name>LE Power Control</name>
           <version>2025.6.2</version>
@@ -107,6 +127,16 @@ referenced in this SBOM.)
         </component>
         <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_sm" type="library">
           <name>Security Manager</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_sync_scanner" type="library">
+          <name>Synchronization to periodic advertising trains by scanning</name>
           <version>2025.6.2</version>
 	      <supplier>
 	        <name>Silicon Laboratories, Inc.</name>
@@ -510,6 +540,16 @@ referenced in this SBOM.)
 	      </supplier>
           <licenses>
             <expression>Zlib</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_sync" type="library">
+          <name>Periodic Advertising Synchronization</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>Zlib AND MSLA</expression>
           </licenses>
         </component>
         <component bom-ref="simplicity_sdk:2025.6.2:hal_system" type="library">
@@ -1008,6 +1048,16 @@ referenced in this SBOM.)
 	      </supplier>
           <licenses>
             <expression>Zlib AND MSLA</expression>
+          </licenses>
+        </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_periodic_sync" type="library">
+          <name>Synchronization to Periodic Advertising without responses trains</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
           </licenses>
         </component>
         <component bom-ref="simplicity_sdk:2025.6.2:device_peripheral_hal" type="library">
@@ -1725,6 +1775,16 @@ referenced in this SBOM.)
             <expression>Zlib</expression>
           </licenses>
         </component>
+        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_scanner" type="library">
+          <name>Scanner Base Feature</name>
+          <version>2025.6.2</version>
+	      <supplier>
+	        <name>Silicon Laboratories, Inc.</name>
+	      </supplier>
+          <licenses>
+            <expression>MSLA</expression>
+          </licenses>
+        </component>
         <component bom-ref="simplicity_sdk:2025.6.2:mbedtls_slcrypto" type="library">
           <name>Silicon Labs Mbed TLS support</name>
           <version>2025.6.2</version>
@@ -2158,66 +2218,6 @@ referenced in this SBOM.)
 	      </supplier>
           <licenses>
             <expression>Zlib</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_extended_scanner" type="library">
-          <name>Scanner for extended advertisements</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>MSLA</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_scanner" type="library">
-          <name>Scanner Base Feature</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>MSLA</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_legacy_scanner" type="library">
-          <name>Scanner for legacy advertisements</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>MSLA</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_sync_scanner" type="library">
-          <name>Synchronization to periodic advertising trains by scanning</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>MSLA</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_sync" type="library">
-          <name>Periodic Advertising Synchronization</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>Zlib AND MSLA</expression>
-          </licenses>
-        </component>
-        <component bom-ref="simplicity_sdk:2025.6.2:bluetooth_feature_periodic_sync" type="library">
-          <name>Synchronization to Periodic Advertising without responses trains</name>
-          <version>2025.6.2</version>
-	      <supplier>
-	        <name>Silicon Laboratories, Inc.</name>
-	      </supplier>
-          <licenses>
-            <expression>MSLA</expression>
           </licenses>
         </component>
       </components>

@@ -2,11 +2,15 @@
 
 #include <cstdio>
 
+#if __cplusplus
 extern "C" {
+#endif
     #include "em_msc.h"
     #include "em_device.h"
     #include "app_log.h"
+#if __cplusplus
 }
+#endif
 
 Storage::Storage() : writeHeadAddr(FLASH_START_ADDRESS) {}
 
@@ -38,7 +42,7 @@ bool Storage::append(const LogEntry& entry) {
         return false; // No more space to write
     }
 
-    MSC_Status_TypeDef result = MSC_WriteWord(static_cast<uint32_t*>(writeHeadAddr), static_cast<const void*>(&entry), sizeof(LogEntry));
+    MSC_Status_TypeDef result = MSC_WriteWord(reinterpret_cast<uint32_t*>(writeHeadAddr), reinterpret_cast<const void*>(&entry), sizeof(LogEntry));
 
     if (result != mscReturnOk) {
         app_log_warning("Storage append failed: MSC_WriteWord returned error code %d\n", result);
@@ -58,7 +62,7 @@ void Storage::wipeAll() {
     app_log_info("Wiping storage from address: 0x%08lX to 0x%08lX\n", start, end);
 
     while (start < end) {
-        erasePage(static_cast<uint32_t*>(start));
+        erasePage(reinterpret_cast<uint32_t*>(start));
         start += FLASH_PAGE_SIZE;
     }
     writeHeadAddr = FLASH_START_ADDRESS;

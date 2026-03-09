@@ -31,7 +31,7 @@
 #include <stdbool.h>
 #include "sl_core.h"
 #include "sl_main_init.h"
-#include "app.h"
+#include "app.hpp"
 
 // "Semaphore" indicating that it is required to execute application process action.
 static uint16_t proceed_request;

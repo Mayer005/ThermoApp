@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+#define DEBUG
+
 namespace StatusFlag {
     static constexpr uint8_t None = 0;
     static constexpr uint8_t Crowded = 1 << 0; // 0000 0001 (Decimal 1) 
@@ -21,13 +23,13 @@ struct LogEntry {
     uint32_t timestamp; // Unix timestamp to know when the log entry was created --> 4byte
 
     int16_t temperature; // Temperature of the room in Celsius, multiplied by 100 to preserve two decimal places --> 2byte    -|
-    uint8_t humidity; // Humidity percentage, multiplied by 10 to preserve one decimal places --> 1byte                        |--> with theese three fields, I can estimate if someone is in the room or not, and if the conditions are good for them to breathe. (its always good to breathe xd)
+    uint8_t humidity; // Humidity percentage                                                  --> 1byte                        |--> with theese three fields, I can estimate if someone is in the room or not, and if the conditions are good for them to breathe. (its always good to breathe xd)
     uint8_t noise_level; // Noise level in the room --> 1byte                                                                 -|
 
     uint16_t ble_device_count_total; // Number of BLE devices detected anywhere nearby (this includes every device which has a ble signal which reaches the device) --> 2byte
     uint16_t ble_device_count_in_close; // Number of BLE devices detected up close --> 2byte
 
-    uint8_t avg_rssi; // Average RSSI of the detected BLE devices, multiplied by 100 to preserve two decimal places (for body shading detection) --> 1byte
+    int8_t avg_rssi; // Average RSSI --> 1byte
     uint8_t padding; // padding --> 1byte
 
     uint8_t battery_level; // battery level --> 1byte

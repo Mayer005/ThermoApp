@@ -9,7 +9,7 @@
 #include "btl_interface.h"
 #include "sl_board_control.h"
 #include "app_log.h"
-#include "app.h"
+#include "app.hpp"
 #include "app_timer_internal.h"
 #include "sl_bluetooth.h"
 #include "sl_debug_swo.h"

@@ -1,8 +1,12 @@
 #include <cmath>
 
 #include "sensormanager.hpp"
+#include "types.hpp"
 
+#ifdef __cplusplus
 extern "C" {
+#endif
+    #include "sl_bt_api.h"
     #include "app_log.h"
     #include "sl_sensor_rht.h"
     #include "sl_health_thermometer.h"
@@ -10,39 +14,40 @@ extern "C" {
     #include "sl_status.h"
     #include "sl_imu.h"
     #include "sl_icm20689.h"
+#ifdef __cplusplus
 }
+#endif
 
-SensorManager::SensorManager() : temperature(0), humidity(0), noiseLevel(0), moving(false) {}
+SensorManager::SensorManager() : moving(false), temperature(0), humidity(0), noiseLevel(0) {}
 
 SensorManager::~SensorManager() {}
 
 void SensorManager::init() {
-    // Initialize sensors
     sl_status_t sc;
-    // Init temperature sensor.
+
     sc = sl_sensor_rht_init();
     if (sc != SL_STATUS_OK) {
-        app_log_warning("Relative Humidity and Temperature sensor initialization failed [0x%04lx]" APP_LOG_NL, sc);
+        app_log_warning("[SensorManager] Relative Humidity and Temperature sensor initialization failed [0x%04lx]" APP_LOG_NL, sc);
     }
-    app_log_info("Health thermometer initialized" APP_LOG_NL);
+    app_log_info("[SensorManager] Health thermometer initialized" APP_LOG_NL);
 
-    sc = sl_mic_init();
+    //sc = sl_mic_init(16000, MIC_N_CHANNELS);
     if (sc != SL_STATUS_OK) {
-        app_log_warning("Microphone initialization failed [0x%04lx]" APP_LOG_NL, sc);
+        app_log_warning("[SensorManager] Microphone initialization failed [0x%04lx]" APP_LOG_NL, sc);
     }
-    app_log_info("Microphone initialized" APP_LOG_NL);
+    app_log_info("[SensorManager] Microphone initialized" APP_LOG_NL);
 
     sc = sl_imu_init();
     if (sc != SL_STATUS_OK) {
-        app_log_warning("IMU initialization failed [0x%04lx]" APP_LOG_NL, sc);
+        app_log_warning("[SensorManager] IMU initialization failed [0x%04lx]" APP_LOG_NL, sc);
     }
-    app_log_info("IMU initialized" APP_LOG_NL);
+    app_log_info("[SensorManager] IMU initialized" APP_LOG_NL);
 
     sc = sl_icm20689_init();
     if (sc != SL_STATUS_OK) {
-        app_log_warning("ICM20689 initialization failed [0x%04lx]" APP_LOG_NL, sc);
+        app_log_warning("[SensorManager] ICM20689 initialization failed [0x%04lx]" APP_LOG_NL, sc);
     }
-    app_log_info("ICM20689 initialized" APP_LOG_NL);
+    app_log_info("[SensorManager]  ICM20689 initialized" APP_LOG_NL);
 
 }
 
@@ -60,10 +65,14 @@ void SensorManager::update() {
     uint32_t humidity = 0;
     sc = sl_sensor_rht_get(&humidity, &temperature);
 
+    #ifdef DEBUG
+    app_log_info("[SensorManager] RHT raw data: Humidity: %lu, Temperature: %ld" APP_LOG_NL, humidity, temperature);
+    #endif
+
     if (SL_STATUS_NOT_INITIALIZED == sc) {
-      app_log_info("Relative Humidity and Temperature sensor is not initialized" APP_LOG_NL);
+      app_log_info("[SensorManager] Relative Humidity and Temperature sensor is not initialized" APP_LOG_NL);
     } else if (sc != SL_STATUS_OK) {
-      app_log_warning("Invalid RHT reading: %lu %ld" APP_LOG_NL, humidity, temperature);
+      app_log_warning("[SensorManager] Invalid RHT reading: %lu %ld" APP_LOG_NL, humidity, temperature);
     }
 
     this->temperature = static_cast<int16_t>(temperature/10); //it is in milli-Celsius by raw. It means 35000->35.000C. Firstly I will divide it only by 10 so it will be 3500->35.00C and the android app will be responsible to divide it by 100 to get the real value. MAX = 327.67C (it is more than enough, if there is a fire in the room, it will burn anyway..)
@@ -71,11 +80,14 @@ void SensorManager::update() {
 
     uint64_t sum = 0;
     sc = sl_mic_get_n_samples(buffer, n_samples); // magic will happen (RMS)
+    #ifdef DEBUG
+    app_log_info("[SensorManager] MIC sample buffer filled with %lu frames" APP_LOG_NL, n_samples);
+    #endif
 
     if (SL_STATUS_NOT_INITIALIZED == sc) {
-      app_log_info("Microphone sensor is not initialized" APP_LOG_NL);
+      app_log_info("[SensorManager] Microphone sensor is not initialized" APP_LOG_NL);
     } else if (sc != SL_STATUS_OK) {
-      app_log_warning("Invalid MIC reading: %lu %ld" APP_LOG_NL, humidity, temperature);
+      app_log_warning("[SensorManager] Invalid MIC reading: %lu %ld" APP_LOG_NL, humidity, temperature);
       this->noiseLevel = 0;
     }
 
@@ -93,16 +105,21 @@ void SensorManager::update() {
         if (real_db_spl < 0) real_db_spl = 0;
 
         this->noiseLevel = static_cast<uint8_t>(real_db_spl);
+    } else {
+        this->noiseLevel = 0;
     }
 
     float accel_data[3];
     sc = sl_icm20689_accel_read_data(accel_data);
+    #ifdef DEBUG
+    app_log_info("[SensorManager] ICM20689 raw accel data: X: %f, Y: %f, Z: %f" APP_LOG_NL, accel_data[0], accel_data[1], accel_data[2]);
+    #endif
 
     if (SL_STATUS_NOT_INITIALIZED == sc) {
-        app_log_info("ICM20689 sensor is not initialized" APP_LOG_NL);
+        app_log_info("[SensorManager] ICM20689 sensor is not initialized" APP_LOG_NL);
         this->moving = false; 
     } else if (sc != SL_STATUS_OK) {
-        app_log_warning("Invalid ICM20689 reading" APP_LOG_NL);
+        app_log_warning("[SensorManager] Invalid ICM20689 reading" APP_LOG_NL);
         this->moving = false; 
     }
     

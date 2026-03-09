@@ -20,7 +20,6 @@ file(GLOB_RECURSE APP_C_SOURCES "../src/*.c")
 include(ThermoApp.cmake)
 
 add_executable(ThermoApp
-    ../main.cpp
     ${APP_CPP_SOURCES}
     ${APP_C_SOURCES}
 )

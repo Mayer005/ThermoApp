@@ -5,10 +5,14 @@
 #include <functional>
 #include <cstdint>
 
+#if __cplusplus
 extern "C" {
+#endif
     #include "em_msc.h"
     #include "em_device.h"
+#if __cplusplus
 }
+#endif
 
 class Storage {
 public:

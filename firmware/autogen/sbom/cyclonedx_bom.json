@@ -3,7 +3,7 @@
   "specVersion" : "1.6",
   "version" : 1,
   "metadata" : {
-    "timestamp" : "2026-02-18T22:05:42Z",
+    "timestamp" : "2026-03-09T20:37:43Z",
     "authors" : [ {
       "name" : "Silicon Laboratories, Inc."
     } ],
@@ -84,6 +84,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_extended_scanner",
+      "name" : "Scanner for extended advertisements",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_gatt_server",
       "name" : "GATT Server",
       "version" : "2025.6.2",
@@ -108,6 +120,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_legacy_scanner",
+      "name" : "Scanner for legacy advertisements",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_power_control",
       "name" : "LE Power Control",
       "version" : "2025.6.2",
@@ -122,6 +146,18 @@
       "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sm",
       "name" : "Security Manager",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync_scanner",
+      "name" : "Synchronization to periodic advertising trains by scanning",
       "version" : "2025.6.2",
       "supplier" : {
         "name" : "Silicon Laboratories, Inc."
@@ -593,6 +629,18 @@
       },
       "licenses" : [ {
         "expression" : "Zlib"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync",
+      "name" : "Periodic Advertising Synchronization",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "Zlib AND MSLA"
       } ]
     }, {
       "scope" : "required",
@@ -1183,6 +1231,18 @@
       },
       "licenses" : [ {
         "expression" : "Zlib AND MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_periodic_sync",
+      "name" : "Synchronization to Periodic Advertising without responses trains",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
       } ]
     }, {
       "scope" : "required",
@@ -2026,6 +2086,18 @@
     }, {
       "scope" : "required",
       "type" : "library",
+      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_scanner",
+      "name" : "Scanner Base Feature",
+      "version" : "2025.6.2",
+      "supplier" : {
+        "name" : "Silicon Laboratories, Inc."
+      },
+      "licenses" : [ {
+        "expression" : "MSLA"
+      } ]
+    }, {
+      "scope" : "required",
+      "type" : "library",
       "bom-ref" : "simplicity_sdk:2025.6.2:mbedtls_slcrypto",
       "name" : "Silicon Labs Mbed TLS support",
       "version" : "2025.6.2",
@@ -2521,78 +2593,6 @@
       },
       "licenses" : [ {
         "expression" : "Zlib"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_extended_scanner",
-      "name" : "Scanner for extended advertisements",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_scanner",
-      "name" : "Scanner Base Feature",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_legacy_scanner",
-      "name" : "Scanner for legacy advertisements",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync_scanner",
-      "name" : "Synchronization to periodic advertising trains by scanning",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_sync",
-      "name" : "Periodic Advertising Synchronization",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "Zlib AND MSLA"
-      } ]
-    }, {
-      "scope" : "required",
-      "type" : "library",
-      "bom-ref" : "simplicity_sdk:2025.6.2:bluetooth_feature_periodic_sync",
-      "name" : "Synchronization to Periodic Advertising without responses trains",
-      "version" : "2025.6.2",
-      "supplier" : {
-        "name" : "Silicon Laboratories, Inc."
-      },
-      "licenses" : [ {
-        "expression" : "MSLA"
       } ]
     } ]
   } ]
